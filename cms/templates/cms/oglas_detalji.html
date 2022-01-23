@@ -20,4 +20,17 @@
             </div>
         {% endfor %}
     </div>
+
+    <div class="novi-komentar">
+        <h4>Dodaj novi komentar</h4>
+        {% if user.is_authenticated %}
+            <form action="/oglasi/{{ oglas.id }}/" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Submit">
+            </form>
+        {% else %}
+            Morate se ulogovati da biste dodali novi komentar
+        {% endif %}
+    </div>
 {% endblock %}

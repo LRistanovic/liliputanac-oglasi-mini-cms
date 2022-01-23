@@ -12,7 +12,19 @@ def svi_oglasi(request):
 
 def oglas_detalji(request, id):
     oglas = models.Oglas.objects.get(id=id)
-    return render(request, 'cms/oglas_detalji.html', { 'oglas': oglas })
+
+    if request.method == 'POST':
+        form = forms.KomentarForm(request.POST)
+        if form.is_valid():
+            novi_komentar = form.save(commit=False)
+            novi_komentar.autor = request.user
+            novi_komentar.oglas = oglas
+            novi_komentar.save()
+            return HttpResponseRedirect(f'/oglasi/{id}/')
+    else:
+        form = forms.KomentarForm()
+
+    return render(request, 'cms/oglas_detalji.html', { 'oglas': oglas, 'form': form })
 
 def oglasi_iz_kategorije(request, id):
     oglasi = models.Oglas.objects.filter(kategorija__id=id)
