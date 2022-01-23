@@ -1,0 +1,15 @@
+{% extends 'cms/base.html' %}
+
+{% block content %}
+    <h3>Oglasi</h3>
+
+    {% for oglas in oglasi %}
+        <div>
+            <h3>{{oglas.ime_proizvoda}}</h3>
+            <p>{{oglas.detalji}}</p>
+            <div>Autor: {{oglas.autor.username}}</div>
+            <div>Kategorija: <a href="/kategorije/oglas.kategorija.id">{{oglas.kategorija.ime_kategorije}}</a></div>
+            <a href="/oglasi/{{ oglas.id }}">detalji</a>
+        </div>
+    {% endfor %}
+{% endblock %}

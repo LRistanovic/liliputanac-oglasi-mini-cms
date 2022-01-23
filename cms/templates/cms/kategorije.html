@@ -1,0 +1,9 @@
+{% extends 'cms/base.html' %}
+
+{% block content %}
+    <h3>Kategorije</h3>
+
+    {% for kategorija in kategorije %}
+        <a href="/kategorije/{{kategorija.id}}">{{kategorija.ime_kategorije}}</a> <br>
+    {% endfor %}
+{% endblock %}

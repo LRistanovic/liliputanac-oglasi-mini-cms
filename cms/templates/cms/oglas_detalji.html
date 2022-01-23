@@ -1,0 +1,23 @@
+{% extends 'cms/base.html' %}
+
+{% block content %}
+    <div class="detalji">
+        <h3>{{ oglas.ime_proizvoda }}</h3>
+        <div class="autor">Autor: {{ oglas.autor.username }}</div>
+        <div class="datum-objave">Datum objave: {{ oglas.datum_objave }}</div>
+        <div class="kategorija">Kategorija: <a href="/kategorije/{{ oglas.kategorija.id }}">{{ oglas.kategorija.ime_kategorije }}</a></div>
+        <div class="detalji-sadrzaj">{{ oglas.detalji }}</div>
+        <div class="cijena">Cijena: {{oglas.cijena }}</div>
+        <div class="grad">Grad: {{ oglas.grad.ime_grada }}</div>
+    </div>
+
+    <div class="komentari">
+        <h4>Komentari</h4>
+        {% for komentar in oglas.komentar_set.all %}
+            <div class="komentar">
+                <div class="autor">{{ komentar.autor }}</div>
+                <div class="sadrzaj">{{ komentar.sadrzaj }}</div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
