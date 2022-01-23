@@ -1,0 +1,15 @@
+{% extends 'cms/base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<form action="/oglasi/novi/" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+</form>
+{% else %}
+<h3>Morate se ulogovati da biste dodali novi oglas.</h3>
+{% endif %}
+
+{% endblock %}

@@ -11,11 +11,20 @@
         <ul>
             <li><a href="/">Početna</a></li>
             <li><a href="/oglasi/">Svi oglasi</a></li>
+            <li><a href="/oglasi/novi">Novi oglas</a></li>
             <li><a href="/kategorije/">Kategorije</a></li>
         </ul>
     </nav>
     {% block content %}
 
     {% endblock %}
+
+    <div class="login-logout">
+        {% if user.is_authenticated %}
+        <a href="/logout/">Logout</a>
+        {% else %}
+        <a href="/login/">Login</a>
+        {% endif %}
+    </div>
 </body>
 </html>
