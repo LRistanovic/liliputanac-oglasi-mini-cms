@@ -2,11 +2,11 @@
 
 {% block content %}
     <div class="detalji">
-        <h3>{{ oglas.ime_proizvoda }}</h3>
+        <h2 class="naslov">{{ oglas.ime_proizvoda }}</h2>
         <div class="autor">Autor: {{ oglas.autor.username }}</div>
         <div class="datum-objave">Datum objave: {{ oglas.datum_objave }}</div>
         <div class="kategorija">Kategorija: <a href="/kategorije/{{ oglas.kategorija.id }}">{{ oglas.kategorija.ime_kategorije }}</a></div>
-        <div class="detalji-sadrzaj">{{ oglas.detalji }}</div>
+        <div class="detalji-sadrzaj">Detalji:<br>{{ oglas.detalji }}</div>
         <div class="cijena">Cijena: {{oglas.cijena }}</div>
         <div class="grad">Grad: {{ oglas.grad.ime_grada }}</div>
     </div>

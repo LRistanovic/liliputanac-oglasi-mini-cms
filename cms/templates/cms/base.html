@@ -4,27 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/base.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
     <title>{% block title %}Mali oglasi{% endblock %}</title>
 </head>
 <body>
     <nav>
-        <ul>
-            <li><a href="/">Početna</a></li>
-            <li><a href="/oglasi/">Svi oglasi</a></li>
-            <li><a href="/oglasi/novi">Novi oglas</a></li>
-            <li><a href="/kategorije/">Kategorije</a></li>
-        </ul>
+        <a href="/">Početna</a></li>
+        <a href="/oglasi/">Svi oglasi</a>
+        <a href="/oglasi/novi">Novi oglas</a>
+        <a href="/kategorije/">Kategorije</a>
     </nav>
-    {% block content %}
 
-    {% endblock %}
+    <div class="content">
+        {% block content %}
 
-    <div class="login-logout">
-        {% if user.is_authenticated %}
-        <a href="/logout/">Logout</a>
-        {% else %}
-        <a href="/login/">Login</a>
-        {% endif %}
+        {% endblock %}
     </div>
+
+    {% if user.is_authenticated %}
+    <a class="login-logout" href="/logout/">Logout</a>
+    {% else %}
+    <a class="login-logout" href="/login/">Login</a>
+    {% endif %}
 </body>
 </html>

@@ -3,6 +3,8 @@
 {% block content %}
 
 {% if user.is_authenticated %}
+<h2 class="naslov">Dodajte novi oglas:</h2>
+
 <form action="/oglasi/novi/" method="post">
     {% csrf_token %}
     {{ form.as_p }}

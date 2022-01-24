@@ -1,15 +1,15 @@
 {% extends 'cms/base.html' %}
 
 {% block content %}
-    <h3>Oglasi</h3>
+    <h2 class="naslov">Oglasi</h2>
 
     {% for oglas in oglasi %}
-        <div>
-            <h3>{{oglas.ime_proizvoda}}</h3>
+        <div class="oglas">
+            <p class="oglas-ime">{{oglas.ime_proizvoda}}</p>
             <p>{{oglas.detalji}}</p>
-            <div>Autor: {{oglas.autor.username}}</div>
-            <div>Kategorija: <a href="/kategorije/oglas.kategorija.id">{{oglas.kategorija.ime_kategorije}}</a></div>
-            <a href="/oglasi/{{ oglas.id }}">detalji</a>
+            <p>Autor: {{oglas.autor.username}}</p>
+            <p>Kategorija: <a href="/kategorije/{{ oglas.kategorija.id }}">{{ oglas.kategorija.ime_kategorije }}</a></p>
+            <p><a href="/oglasi/{{ oglas.id }}" class="oglas-detalji">Detalji</a></p>
         </div>
     {% endfor %}
 {% endblock %}
