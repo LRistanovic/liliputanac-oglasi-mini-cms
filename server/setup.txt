@@ -1,14 +1,22 @@
-# set up environment
+# environment
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
-# set up uwsgi service
+# django
+add .env file
+./manage.py migrate
+./manage.py createsuperuser
+
+# uwsgi service
+mkdir .venv/var
+mkdir .venv/var/run
+touch .venv/var/run/uwsgi.sock
 cp server/app.service /etc/systemd/system/liliputanac.ml.service
 systemctl daemon-reload
-systemctl start lililiputanac.ml.service
+systemctl restart liliputanac.ml.service
 
-# set up nginx
-cp liliputanac.ml.conf /etc/nginx/sites-available/
+# nginx
+cp server/liliputanac.ml.conf /etc/nginx/sites-available/
 ln -s /etc/nginx/sites-available/liliputanac.ml.conf /etc/nginx/sites-enabled/liliputanac.ml.conf
-systemctl start nginx
+systemctl restart nginx
