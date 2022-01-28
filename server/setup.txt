@@ -1,0 +1,14 @@
+# set up environment
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+# set up uwsgi service
+cp server/app.service /etc/systemd/system/liliputanac.ml.service
+systemctl daemon-reload
+systemctl start lililiputanac.ml.service
+
+# set up nginx
+cp liliputanac.ml.conf /etc/nginx/sites-available/
+ln -s /etc/nginx/sites-available/liliputanac.ml.conf /etc/nginx/sites-enabled/liliputanac.ml.conf
+systemctl start nginx

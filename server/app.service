@@ -3,10 +3,10 @@ Description=uWSGI instance to serve appname project
 After=network.target
 
 [Service]
-User=ubuntu
-WorkingDirectory=/var/www/oglasi-mini-cms
-Environment="PATH=/var/www/oglasi-mini-cms/.venv/bin"
-ExecStart=/var/www/oglasi-mini-cms/.venv/bin/uwsgi --ini /var/www/oglasi-mini-cms/server/uwsgi.ini
+User=root
+WorkingDirectory=/var/www/liliputanac-oglasi-mini-cms
+Environment="PATH=/var/www/liliputanac-oglasi-mini-cms/.venv/bin"
+ExecStart=/var/www/liliputanac-oglasi-mini-cms/.venv/bin/uwsgi --ini /var/www/liliputanac-oglasi-mini-cms/server/uwsgi.ini
 KillSignal=SIGQUIT
 Type=notify
 NotifyAccess=all
